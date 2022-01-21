@@ -1,0 +1,22 @@
+﻿@{
+    var m = ViewBag.Message as Tuple<bool, string>;
+}
+
+<div style="margin-top:20%" class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            @if (m.Item1)
+            {
+                <div class="alert alert-danger text-white">
+                   @m.Item2
+                </div>
+            }
+            else
+            {
+        <div class="alert alert-success text-white">
+            @m.Item2
+        </div>
+            }
+        </div>
+    </div>
+</div>

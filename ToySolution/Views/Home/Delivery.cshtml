@@ -1,0 +1,37 @@
+﻿@model IndexViewModels
+@{
+    ViewData["Title"] = "Delivery";
+}
+
+<section style="padding-top:61px">
+    <div class="navigation" style="margin-top: 80px;display: flex;align-items: flex-start;">
+        <ul>
+            <li>Home</li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                </svg>
+            </li>
+            <li>Delivery</li>
+        </ul>
+    </div>
+</section>
+<section>
+    <div class="delivery">
+        <div style="display: flex;  justify-content: flex-start;" class="deliveryinfo">
+            @foreach (var item in Model.Deliveries)
+            {
+                @Html.Raw(item.Head)
+            }
+
+           
+            <div class="inforight">
+                <div class="h4">Can't Find the Answer to Your Question?</div>
+                <a asp-controller="Contact" asp-action="contact">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+

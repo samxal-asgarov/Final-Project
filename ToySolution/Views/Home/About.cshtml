@@ -1,0 +1,174 @@
+﻿@model  IndexViewModels
+@{
+    ViewData["Title"] = "About";
+}
+<section style="padding-top:61px">
+    <div class="navigation" style="margin-top: 80px;display: flex;align-items: flex-start;margin-bottom: 17px;">
+        <ul>
+            <li>Home</li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                </svg>
+            </li>
+            <li>About</li>
+        </ul>
+    </div>
+</section>
+<section>
+    <div class="about">
+        <h4>@Model.AboutIntros.Tittle</h4>
+        <div class="about-info">
+            <h2>@Model.AboutIntros.Head</h2>
+            <p>
+                @Model.AboutIntros.Desc
+            </p>
+            <div class="button ">
+                <a class="first" href="">More About Us</a>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+<section>
+    <div class="aboutimage">
+        <img src="~/uploads/images/@Model.AboutIntros.ImgPath" alt="">
+    </div>
+</section>
+<section>
+
+
+
+
+
+    <div class="aboutindex ">
+        <div class="aboutintro">
+            <div class="tittle">Made For WebFlow</div>
+            <h2>Simple & Colorful Ecommerce Template for Your Business</h2>
+        </div>
+
+
+    </div>
+    <div class="about second">
+        <div class="container">
+         
+                <div class="row abt">
+                    <div class="str">
+                        <div class="col-6 info">
+                            <h2>@Model.AboutUs.Tittle</h2>
+                            <div class="aboutcolor"></div>
+                            <p>
+                                @Model.AboutUs.Desc
+                            </p>
+
+                            <a asp-controller="home" asp-action="index">Get It for Free!</a>
+
+
+                        </div>
+                        <div class="col-6 about-img">
+                            <img data-aos="zoom-in" class="  im1" style=" width: 100%;
+
+                   height: 423px;" src="~/uploads/images/@Model.AboutUs.ImgPath" alt="">
+                        </div>
+                    </div>
+
+
+                </div>
+       
+
+        </div>
+
+    </div>
+
+
+    <!-- responsive qaldi iphone x ucun  -->
+
+    <div class="about">
+        <div class="container">
+          
+                <div class="row abt aboutpart2">
+                    <div class="str">
+                        <div class="col-6 info">
+                            <h2>@Model.AboutOurToys.Tittle</h2>
+                            <div class="aboutcolor"></div>
+                            <p>
+                                @Model.AboutOurToys.Desc
+                            </p>
+                            <a asp-controller="home" asp-action="catalog">Explore Our Toys!</a>
+                        </div>
+                        <div class="col-6 about-img">
+                            <img data-aos="zoom-in" class="  im1" style=" width: 100%;
+
+                   height: 423px;" src="~/uploads/images/@Model.AboutOurToys.ImgPath" alt="">
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+<section id="storex">
+    <div class="watchstory  story">
+        <div data-aos="zoom-in" class="storyabout  ">
+            <div class="tittle">
+                @Model.AboutStories.Head
+            </div>
+            <h1>@Model.AboutStories.Tittle</h1>
+            <p>
+                @Model.AboutStories.Desc
+            </p>
+
+        </div>
+    </div>
+
+    <div class="container mod">
+
+
+
+        <!-- Button trigger modal -->
+        <button id="modabt" type="button" class="btn btn-primary video-btn" data-bs-toggle="modal" data-src="https://youtu.be/SnEIJaPl008" data-bs-target="#myModal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"
+                 class="bi bi-play-fill" viewBox="0 0 16 16">
+                <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
+            </svg>
+        </button>
+
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+
+                    <div class="modal-body">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            </span>
+                        </button>
+                        <!-- 16:9 aspect ratio -->
+                        <div class="ratio ratio-16x9">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/SnEIJaPl008" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</section>

@@ -1,0 +1,194 @@
+﻿@model IndexViewModels
+@{
+    ViewData["Title"] = "Catalog";
+}
+
+
+@section addcss{ 
+<style>
+    .btn-active {
+        background-color: #a5c926;
+    }
+</style>
+}
+<section style="padding-top:61px">
+    <div class="navigation" style="margin-top: 80px;display: flex;align-items: flex-start;">
+        <ul>
+            <li>Home</li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                </svg>
+            </li>
+            <li>Catalog</li>
+        </ul>
+    </div>
+</section>
+<section>
+    <div class="container category toys">
+        <div class="row toy">
+            <div class="col category-head toyshead">
+                <h2>All Toys</h2>
+            </div>
+
+            <div style="text-align: end;display: flex;
+              justify-content: end;
+              align-items: center;" class="col toysul push_two two columns">
+                <ul>
+
+                    <li style="padding: 8px;">
+                        <button style=" border: none; " class="btn-active" cs-filter="*" id="toysulnav">All Toys</button>
+
+                    </li>
+                    @foreach (var item in Model.Sort)
+                    {
+
+                        <li style="padding: 8px;">
+                            <button  style=" border: none; " cs-filter="@item.Id">@item.Name</button>
+
+                        </li>
+                    }
+
+
+
+                
+                </ul>
+            </div>
+            <div class="categoryshop catalogline">
+                <div class="shopcolor">
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="toyscard">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.Products)
+                {
+                    <div class="col items" cs-category="@item.Sort.Id">
+                        
+                        <a class="items-img-holder" asp-controller="home" asp-action="catalogdetails" asp-route-id="@item.Id">
+                            <div class="card">
+                                <img src="~/uploads/images//@item.ImgPath"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title product-name">@item.Name</h5>
+                                    <span class="product-price">$  @item.Value USD</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+        @*<div class="container">
+                <div class="row">
+                  <div class="col">
+                    <a  asp-controller="home" asp-action="catalogdetails">
+                      <div class="card">
+                        <img
+                          src="~/uploads/images//ayi.png"
+                          class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Happy Flower</h5>
+                          <span>$ 38.00 USD</span>
+                        </div>
+                      </div>
+                    </a>
+
+                  </div>
+                  <div class="col">
+                    <a  asp-controller="home" asp-action="catalogdetails">
+                      <div class="card">
+                        <img
+                          src="~/uploads/images//ayi.png"
+                          class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Lift Machine</h5>
+                          <span>$ 30.00 USD</span>
+
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col">
+                    <a  asp-controller="home" asp-action="catalogdetails">
+                      <div class="card">
+                        <img
+                          src="~/uploads/images//ayi.png"
+                          class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Wooden Camera</h5>
+                          <span>$ 30.00 USD</span>
+
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col">
+                    <a  asp-controller="home" asp-action="catalogdetails">
+                      <div class="card">
+                        <img
+                          src="~/uploads/images//ayi.png"
+                          class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Little Rabbit</h5>
+                          <span>$ 30.00 USD</span>
+
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+            </div>*@
+
+</section>
+
+
+
+
+
+@section addjs{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+    <script>
+
+        $(function () {
+
+            // Filter
+            $("button[cs-filter]").click(function () {
+                var t = $(this).attr('cs-filter');
+                $("button[cs-filter]").removeClass('btn-active');
+                $(this).addClass('btn-active');
+                if (t == "*") {
+                    $(".items[cs-category]").show("fast");
+                } else {
+                    $.each($(".items[cs-category]"), function (index, value) {
+                        if (!$(this).attr('cs-category').match(new RegExp(t))) {
+                            $(this).hide("fast");
+                        } else {
+                            $(this).show("fast");
+                        }
+                    });
+                }
+            });
+
+           
+
+        });
+
+    </script>
+   
+}

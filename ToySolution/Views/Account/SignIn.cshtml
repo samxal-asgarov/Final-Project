@@ -1,0 +1,86 @@
+﻿@model LoginFormModel
+@{
+    ViewData["Title"] = "SignIn";
+}
+
+<div class="col-md-8">
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('images/bg-01.jpg'); left:20%">
+            <div class="wrap-login100 p-t-30 p-b-50">
+
+                <form class="login100-form validate-form p-b-33 p-t-5" method="post">
+                    @if (!string.IsNullOrWhiteSpace(ViewBag.Ms))
+                    {
+                        <div class="form-group mb-3">
+                            <div class="alert alert-danger text-primary">
+                                @ViewBag.Ms
+                            </div>
+                        </div>
+                    }
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100"
+                               asp-for="UserName"
+                               placeholder="UserName or Email Address">
+                        <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100"
+                               asp-for="Password"
+                               placeholder="Password">
+                        <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                    </div>
+
+                    <div style="display:flex">
+                        <div class="container-login100-form-btn m-t-32">
+                            <button type="submit" class="login100-form-btn">
+                                Login
+                            </button>
+                        </div>
+
+                        <div class="container-login100-form-btn m-t-32">
+                            <a asp-controller="Account" asp-action="Register" class="login100-form-btn">
+                                Register
+                            </a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="dropDownSelect1"></div>
+
+@section addcss{
+
+
+    <link rel="stylesheet" type="text/css" href="~/LoginUser/vendor/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/LoginUser/css/main.css">
+
+}
+
+@section addjs{
+
+    <script href="~/LoginUser/vendor/jquery/jquery-3.2.1.min.js"></script>
+
+    <script href="~/LoginUser/vendor/animsition/js/animsition.min.js"></script>
+
+    <script href="~/LoginUser/vendor/bootstrap/js/popper.js"></script>
+    <script href="~/LoginUser/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script href="~/LoginUser/vendor/select2/select2.min.js"></script>
+
+    <script href="~/LoginUser/vendor/daterangepicker/moment.min.js"></script>
+    <script href="~/LoginUser/vendor/daterangepicker/daterangepicker.js"></script>
+
+    <script href="~/LoginUser/vendor/countdowntime/countdowntime.js"></script>
+
+    <script href="~/LoginUser/js/main.js"></script>
+}
+
+

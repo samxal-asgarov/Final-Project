@@ -1,0 +1,307 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+<section >
+
+    <div class="wrapper" style="display: flex;">
+        <div class="wrap-info animate__animated animate__zoomIn">
+            <div class="title">
+                <span>Say Hello to ToyStore!</span>
+            </div>
+            <div class="inf">
+                <span>You can find every product you want here</span>
+            </div>
+
+
+            <a asp-controller="home" asp-action="catalog">Open Catalog</a>
+        </div>
+
+    </div>
+
+
+
+
+</section>
+<!-- bu qaldi responsive iphone x -->
+<section>
+    <div class="wrap" style="display: flex;">
+        <div class="wrap1 animate__animated animate__zoomIn" style="display: flex;">
+            <img src="~/uploads/./images/ayi.png"
+                 alt="">
+            <div class="wrap1info">
+                <h1>Stuffed Animals</h1>
+                <a href="./stuffedtoys.html">Shop Now</a>
+            </div>
+        </div>
+        <div class="wrap2 animate__animated animate__zoomIn" style="display: flex;">
+            <div class="wrap2info">
+                <h1>Wooden Toys</h1>
+                <a href="./woodentoys.html">Shop Now</a>
+            </div>
+
+            <img src="~/uploads/./images/ulduz.png"
+                 alt="">
+        </div>
+    </div>
+</section>
+
+
+
+
+<section>
+    <div class="container category">
+        <div class="row">
+            <div class="col category-head">
+                <h1>Stuffed Animals</h1>
+            </div>
+
+            <div class="rightarrow" style="text-align: end;display: flex;
+          justify-content: end;
+          align-items: center;margin-top: -32px;" class="col category-head-a">
+                <a class="arrow" href="./stuffedtoys.html">
+                    See All Toys
+                </a> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                </svg>
+            </div>
+        </div>
+        <div class="categoryshop">
+            <div class="shopcolor">
+
+            </div>
+        </div>
+    </div>
+    <div class="container ayi">
+        <div class="row">
+            <div class=" col">
+                <a asp-controller="home" asp-action="catalogdetails">
+                    <div data-aos="fade-up" class="card">
+                        <img src="~/uploads/./images/ayi.png"
+                             class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Teddy Bear</h5>
+                            <span>$ 30.00 USD</span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            <div class="col">
+                <a asp-controller="home" asp-action="catalogdetails">
+                    <div data-aos="fade-up" class="card">
+                        <img src="~/uploads/./images/ayi.png"
+                             class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Teddy Bear</h5>
+                            <span>$ 30.00 USD</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a asp-controller="home" asp-action="catalogdetails">
+                    <div data-aos="fade-up" class="card">
+                        <img src="~/uploads/./images/ayi.png"
+                             class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Teddy Bear</h5>
+                            <span>$ 30.00 USD</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a asp-controller="home" asp-action="catalogdetails">
+                    <div data-aos="fade-up" class="card">
+                        <img src="~/uploads/./images/ayi.png"
+                             class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Teddy Bear</h5>
+                            <span>$ 30.00 USD</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div class="container category ctg">
+        <div class="row">
+            <div class="col-6 category-head-b">
+                <h1 style="font-size: 28px;">Wooden Toys</h1>
+            </div>
+
+            <div style="text-align: end;display: flex;
+      justify-content: end;
+      align-items: center;" class="col-6 category-head-a">
+                <a class="arrow" href="./woodentoys.html">
+                    See All Toys
+                </a> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                </svg>
+            </div>
+        </div>
+        <div class="categoryshop">
+            <div class="shopcolor">
+
+            </div>
+        </div>
+    </div>
+    <div class="container ayi">
+        <div class="row ">
+            <div class="col">
+                <a asp-controller="home" asp-action="catalogdetails">
+                    <div data-aos="zoom-in" class="card">
+                        <img src="~/uploads/./images/ayi.png"
+                             class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Happy Flower</h5>
+                            <span>$ 38.00 USD</span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            <div class="col">
+                <a asp-controller="home" asp-action="catalogdetails">
+                    <div data-aos="zoom-in" class="card">
+                        <img src="~/uploads/./images/ayi.png"
+                             class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Happy Flower</h5>
+                            <span>$ 38.00 USD</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a asp-controller="home" asp-action="catalogdetails">
+                    <div data-aos="zoom-in" class="card">
+                        <img src="~/uploads/./images/ayi.png"
+                             class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Happy Flower</h5>
+                            <span>$ 38.00 USD</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a asp-controller="home" asp-action="catalogdetails">
+                    <div data-aos="zoom-in" class="card">
+                        <img src="~/uploads/./images/ayi.png"
+                             class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Happy Flower</h5>
+                            <span>$ 38.00 USD</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="storex">
+    <div class="watchstory story">
+        <div data-aos="zoom-in" class="storyabout ">
+            <div class="tittle">
+                About The Shop
+            </div>
+            <h1>Watch Our Story</h1>
+            <p>
+                There is no magic formula to write perfect ad copy. It is based on a number of factors, including ad
+                placement, demographic, even the consumer’s mood.
+            </p>
+
+
+        </div>
+    </div>
+    <div class="container mod">
+
+
+
+        <!-- Button trigger modal -->
+        <button id="modabt" type="button" class="btn btn-primary video-btn" data-bs-toggle="modal" data-src="https://youtu.be/SnEIJaPl008" data-bs-target="#myModal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"
+                 class="bi bi-play-fill" viewBox="0 0 16 16">
+                <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
+            </svg>
+        </button>
+
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+
+                    <div class="modal-body">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            </span>
+                        </button>
+                        <!-- 16:9 aspect ratio -->
+                        <div class="ratio ratio-16x9">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/SnEIJaPl008" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</section>
+<section>
+    <!-- responsive qaldi iphone x ucun  -->
+    <div class="aboutindex ">
+        <div class="aboutintro">
+            <div class="tittle">Made For WebFlow</div>
+            <h2>Simple & Colorful Ecommerce Template for Your Business</h2>
+        </div>
+
+
+    </div>
+    <div class="about">
+        <div class="container">
+            <div class="row abt">
+                <div class="str">
+                    <div class="col-6 info">
+                        <h2>Available for FREE!</h2>
+                        <div class="aboutcolor"></div>
+                        <p>
+                            A successful marketing plan relies heavily on the pulling-power of advertising copy. Writing
+                            result-oriented ad copy is difficult, as it must appeal to, entice, and convince consumers to take
+                            action. There is no magic formula to write perfect ad copy
+                        </p>
+                        <a href="">Get It Now!</a>
+                    </div>
+                    <div data-aos="zoom-in" class="col-6 about-img">
+                        <img class="  im1" style=" width: 100%;
+
+               height: 423px;"
+                             src="~/uploads/images/spiderman.jpg"
+                             alt="">
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</section>
+

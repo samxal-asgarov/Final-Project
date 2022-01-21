@@ -1,0 +1,58 @@
+﻿@model AboutToysViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>AboutOurToys</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data" asp-action="edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group col-12 ">
+                <label class="control-label">
+                    Şəkil
+                </label>
+                <label class="image-input"
+                       data-imgurl="/uploads/images/@Model.ImgPath"
+                       for="file">
+                    <input type="hidden" name="fileTemp" value="@Model.file">
+                    <span>×</span>
+                </label>
+                <input name="file" id="file" type="file" accept="image/x-png,image/gif,image/jpeg">
+            </div>
+            <div class="form-group">
+                <label asp-for="Tittle" class="control-label"></label>
+                <input asp-for="Tittle" class="form-control" />
+                <span asp-validation-for="Tittle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Desc" class="control-label"></label>
+                <input asp-for="Desc" class="form-control" />
+                <span asp-validation-for="Desc" class="text-danger"></span>
+            </div>
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+
+@section addjs{
+    <script src="~/libs/jqueryimage/ImageGetiren.js"></script>
+}
+@section addcss{
+    <link href="~/libs/jqueryimage/StyleSheet.css" rel="stylesheet" />
+}
