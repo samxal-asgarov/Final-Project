@@ -110,8 +110,22 @@ using ToySolution.Models.FormModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 17 "C:\Users\User\Desktop\Final-Project\ToySolution\Areas\Admin\Views\_ViewImports.cshtml"
+using ToySolution.Models.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 18 "C:\Users\User\Desktop\Final-Project\ToySolution\Areas\Admin\Views\_ViewImports.cshtml"
+using ToySolution.Models.Entities.Membership;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"acac91ea1e3fb1c4515175fddfb716231278716a", @"/Areas/Admin/Views/AboutToys/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0d504e457851025e1120aacc68258ef1124fca6e", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"41afc7ea4c12f1ede13a8b89ac18551fc32ae096", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_AboutToys_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ToyStoreSolution.Models.Entities.AboutOurToys>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("width", new global::Microsoft.AspNetCore.Html.HtmlString("40%"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -186,7 +200,7 @@ using ToySolution.Models.FormModels;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n        </dd>\r\n        <td>\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "acac91ea1e3fb1c4515175fddfb716231278716a9312", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "acac91ea1e3fb1c4515175fddfb716231278716a9731", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -212,7 +226,7 @@ AddHtmlAttributeValue("", 695, Model.ImgPath, 695, 14, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n        </td>\r\n\r\n    </dl>\r\n</div>\r\n<div>\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "acac91ea1e3fb1c4515175fddfb716231278716a11116", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "acac91ea1e3fb1c4515175fddfb716231278716a11535", async() => {
                 WriteLiteral("Edit");
             }
             );
@@ -243,7 +257,7 @@ AddHtmlAttributeValue("", 695, Model.ImgPath, 695, 14, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral(" |\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "acac91ea1e3fb1c4515175fddfb716231278716a13270", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "acac91ea1e3fb1c4515175fddfb716231278716a13689", async() => {
                 WriteLiteral("Back to List");
             }
             );

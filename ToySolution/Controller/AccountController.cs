@@ -10,29 +10,32 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ToySolution.AppCode.Extensions;
+using ToySolution.Models.Entities.Membership;
 using ToySolution.Models.FormModels;
 using ToyStoreSolution.Models.DataContext;
 using ToyStoreSolution.Models.ViewModels;
 
 namespace ToySolution.Controllers
 {
+    [AllowAnonymous]
+
     public class AccountController : Controller
     {
-        readonly UserManager<User> userManager;
-        readonly SignInManager<User> signInManager;
+        readonly UserManager<StoreUser> userManager;
+        readonly SignInManager<StoreUser> signInManager;
         readonly IConfiguration configuration;
         readonly StoreDbContext vv;
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IConfiguration configuration, StoreDbContext vv)
+        public AccountController(UserManager<StoreUser> userManager, SignInManager<StoreUser> signInManager, IConfiguration configuration, StoreDbContext vv)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
             this.configuration = configuration;
             this.vv = vv;
         }
-        [AllowAnonymous]
         public IActionResult SignIn()
         {
-            
+
+
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("index", "Home");
@@ -42,7 +45,6 @@ namespace ToySolution.Controllers
             return View();
         }
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> SignIn(LoginFormModel model)
         {
 
@@ -53,7 +55,7 @@ namespace ToySolution.Controllers
             }
             if (ModelState.IsValid) //her shey qaydasndadrsa
             {
-                User user = null;
+                StoreUser user = null;
 
                 if (model.UserName.IsEmail())
                 {
@@ -67,30 +69,31 @@ namespace ToySolution.Controllers
                 if (user == null) //isdifadeci olmuyanda view gonder
                 {
                     ViewBag.Ms = "Isdifadeci sifreniz ve ya parolnuz yanlisdir";
-                    return View(user);
+                    return View(model);
                 }
-                //if (user.EmailConfirmed == false)
-                //{
-                //    ViewBag.Ms = " Emailinizi testiq et!!";
-                //    return View(user);
-                //}
-                if (await userManager.IsInRoleAsync(user, "user")) //databazada yolxuyur bele user var yoxsa yox
+
+                if (user.EmailConfirmed==false)
                 {
-                    ViewBag.Ms = "Isdifadeci adiniz ve ya parolnuz yanlisdir";   ///admin sign in de yazmaliyam
-                    return View(user);
+                    ViewBag.Ms = "Zehmet olmasa E-mail hesabini tesdiq edin";
+
+                    return View(model);
+
                 }
-                //if (user.Active == false)
-                //{
-                //    ViewBag.Ms = "Sizin girisinize qada var";
-                //    return View(user);
-                //}
+
+                if (user.Active == false)
+                {
+                    ViewBag.Ms = "Siz admin terefinden ban olunmusuz";
+                    return View(model);
+
+                    //return View(/*viewName: "~/Areas/Admin/Views/Users/Activated.cshtml",*/ user);
+                }
                 if (user.Active == true)
                 {
                     var result = await signInManager.PasswordSignInAsync(user, model.Password, true, true);//giris edildi
                     if (result.Succeeded != true) // girisniz ugursuz oldu
                     {
                         ViewBag.Ms = "Isdifadeci sifresi ve parol sehvdir";
-                        return View(user);
+                        return View(model);
 
                     }
                     var redirectUrl = Request.Query["ReturnUrl"];
@@ -108,83 +111,137 @@ namespace ToySolution.Controllers
             ViewBag.Ms = "Melumatlari doldurun";
             return View(model);
         }
-        [AllowAnonymous]
+
 
 
 
 
         public IActionResult Register()
         {
+
             return View();
         }
         [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult> Register(RegisterFormModel model)
+        public async Task<IActionResult> Register(RegisterFormModel register)
         {
-            if (ModelState.IsValid)//her shey qaydasindadirsa
+
+
+
+            //Eger giris edibse routda myaccount/sing yazanda o seyfe acilmasin homa tulaasin
+            if (User.Identity.IsAuthenticated)
             {
-                var user = new User();
-                user.Email = model.Email;
-                user.Surname = model.SurName;
-                user.Name = model.Name;
-                user.UserName = model.UserName;
-                user.EmailConfirmed = true;
-              
+                return RedirectToAction("index", "Home");
 
-                var result = await userManager.CreateAsync(user, model.Password);
+            }
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
 
-                if (result.Succeeded)
+            //Yeni user yaradiriq.
+            StoreUser user = new StoreUser
+            {
+
+                UserName = register.UserName,
+                Email = register.Email,
+                Name = register.Name,
+                Surname = register.SurName,
+                Active = true
+            };
+
+
+
+            string token = $"subscribetoken-{register.UserName}-{DateTime.Now:yyyyMMddHHmmss}"; // token yeni id goturuk
+
+            token = token.Encrypt("");
+
+            string path = $"{Request.Scheme}://{Request.Host}/subscribe-confirmm?token={token}"; // path duzeldirik
+
+
+
+            var mailSended = configuration.SendEmail(user.Email, "ToyStore Qeydiyyat ", $"Zehmet olmasa <a href={path}>Link</a> vasitesile abuneliyi tamamlayin");
+
+
+            var person = await userManager.FindByNameAsync(user.UserName);
+
+
+            if (person == null)
+            {
+                //Burda biz userManager vasitesile user ve RegistirVM passwword yoxluyuruq.(yaradiriq)
+                var identityRuselt = await userManager.CreateAsync(user, register.Password);
+
+
+                //Startupda yazdigimiz qanunlara uymursa Configure<IdentityOptions> onda error qaytariq summary ile.;
+                if (!identityRuselt.Succeeded)
                 {
-                    var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
-                    string path = $"{Request.Scheme}://{Request.Host}/registration-confirm.html?email={user.Email}&token={token}"; // path duzeldirik
-                    var emailRespons = configuration.SendEmail(user.Email, "ToyStore user registration", $"Zehmet olmasa <a href={path}>Link</a> vasitesile abuneliyi tamamlayin");//sorgu gonderirik emaile
-                    if (emailRespons)
+                    foreach (var error in identityRuselt.Errors)
                     {
-                        ViewBag.Ms = "Siz qeydiyyatdan ugurla kecidiniz";
+                        ModelState.AddModelError("", error.Description);
                     }
-                    else
-                    {
-                        ViewBag.Ms = "E-maile gondererken sehf askar olundu yeniden cehd edin";
-                    }
-
-
-                    return RedirectToAction(nameof(SignIn));
                 }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(error.Code, error.Description);
-                }
+
+                //Yaratdigimiz user ilk yarananda user rolu verik.
+
+                await userManager.AddToRoleAsync(user, "User");
+
+                return RedirectToAction("SignIn", "Account");
+
             }
 
 
-            return View();
+            if (person.UserName != null)
+            {
+                ViewBag.ms = "Bu username evvelceden qeydiyyatdan kecib";
+
+                return View(register);
+            }
+            return null;
+
+
+
         }
 
+
+
+
+
         [AllowAnonymous]
-      
-        public async Task<IActionResult> RegisterConfirm(string email, string token)
+
+        [HttpGet]
+        [Route("subscribe-confirmm")]
+        public IActionResult SubscibeConfirm(string token)
         {
-            var faundUser = await userManager.FindByEmailAsync(email);//email axtarir
-            if (faundUser == null)
+
+
+            token = token.Decrypte("");
+
+            Match match = Regex.Match(token, @"subscribetoken-(?<id>[a-zA-Z0-9]*)(.*)-(?<timeStampt>\d{14})");
+
+            if (match.Success)
             {
-                ViewBag.Ms = "Xetali token";
-                goto end;
+                string id = match.Groups["id"].Value;
+                string executeTimeStamp = match.Groups["executeTimeStamp"].Value;
+
+                var subsc = vv.Users.FirstOrDefault(s => s.UserName == id);
+
+                if (subsc == null)
+                {
+                    ViewBag.ms = Tuple.Create(true, "Token xetasi");
+                    goto end;
+                }
+                if (subsc.EmailConfirmed == true)
+                {
+                    ViewBag.ms = Tuple.Create(true, "Artiq tesdiq edildi");
+                    goto end;
+                }
+                subsc.EmailConfirmed = true;
+                vv.SaveChanges();
+
+                ViewBag.ms = Tuple.Create(false, "Qeydiyyatdan ugurla kecdiniz!");
+
             }
-
-            token.Replace(" ", "+");
-
-            var result = await userManager.ConfirmEmailAsync(faundUser, token);///eger tapibsa qeydiyyat tesdiqle
-
-            if (!result.Succeeded)
-            {
-                ViewBag.Ms = "Xetali token";
-                goto end;
-            }
-
-
-            ViewBag.Ms = "Hesabiniz ugurla tesdiqlendi";
-            end:// her shey qaydasindadrsa
-            return RedirectToAction(nameof(SignIn));
+        end:
+            return View();
         }
 
 
@@ -195,5 +252,8 @@ namespace ToySolution.Controllers
             return RedirectToAction(nameof(SignIn));
 
         }
+
+      
     }
 }
+

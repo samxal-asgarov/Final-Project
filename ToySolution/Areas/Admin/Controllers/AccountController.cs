@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ToySolution.Models.Entities.Membership;
 using ToySolution.Models.FormModels;
 using ToyStoreSolution.Models.DataContext;
 
@@ -17,10 +18,10 @@ namespace ToySolution.Areas.Admin.Controllers
 
     public class AccountController : Controller
     {
-        readonly UserManager<User> userManager;
-        readonly SignInManager<User> signInManager;
+        readonly UserManager<StoreUser> userManager;
+        readonly SignInManager<StoreUser> signInManager;
         readonly StoreDbContext db;
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, StoreDbContext db)
+        public AccountController(UserManager<StoreUser> userManager, SignInManager<StoreUser> signInManager, StoreDbContext db)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -39,7 +40,7 @@ namespace ToySolution.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
 
-                User founderUser = null;
+                StoreUser founderUser = null;
 
                 if (user.UserName.IsEmail())
                 {

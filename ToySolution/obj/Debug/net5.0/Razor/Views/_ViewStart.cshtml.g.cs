@@ -48,14 +48,21 @@ using ToySolution.Models.FormModels;
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\User\Desktop\Final-Project\ToySolution\Views\_ViewImports.cshtml"
+#line 8 "C:\Users\User\Desktop\Final-Project\ToySolution\Views\_ViewImports.cshtml"
 using ToySolution.Models.ViewModels;
 
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 9 "C:\Users\User\Desktop\Final-Project\ToySolution\Views\_ViewImports.cshtml"
+using ToySolution.Models.Entities.Membership;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7091c65830b0329e613be026ede8a57552863778", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7e8c246c3cd349cf301349a5bf036daa76f82b0d", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"306bcbf19667b9dc057b3cb9f7801786fb14c096", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

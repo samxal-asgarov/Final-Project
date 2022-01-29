@@ -104,6 +104,8 @@ namespace ToySolution.Areas.Admin.Controllers
             product.Width = respons.Width;
             product.Body = respons.Body;
             product.Desc = respons.Desc;
+            product.HomePageShow = respons.HomePageShow;
+            
 
 
             return View(product);

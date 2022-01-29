@@ -29,6 +29,12 @@
                 <input name="file" id="file" type="file" accept="image/x-png,image/gif,image/jpeg">
             </div>
             <div class="form-group">
+                <label asp-for="HomePageShow" class="control-label"></label>
+                <input style=" margin-top: -38px;" asp-for="HomePageShow" class="form-control" />
+                <span asp-validation-for="HomePageShow" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
@@ -70,8 +76,8 @@
                 <span asp-validation-for="Length" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Body" class="control-label"></label>
-                <input asp-for="Body" class="form-control" />
+                <label asp-for="Body" class="control-label sil"></label>
+                <textarea asp-for="Body" class="form-control"></textarea>
                 <span asp-validation-for="Body" class="text-danger"></span>
             </div>
 
@@ -90,8 +96,34 @@
 
 
 @section addjs{
+
+    <script src="~/libs/ckeditor5/ckeditor.js"></script>
     <script src="~/libs/jqueryimage/ImageGetiren.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            ClassicEditor
+                .create(document.querySelector('#Body'))
+                .catch(error => {
+                    console.error(error);
+                });
+
+
+
+        });
+        $(document).ready(function () {
+
+            var elem = $('.textarea').text().length;
+
+            if (elem == 48) {
+                $('.sil').hide();
+            }
+
+        });</script>
 }
 @section addcss{
     <link href="~/libs/jqueryimage/StyleSheet.css" rel="stylesheet" />
 }
+
+
+

@@ -4,17 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
-@Model.GetPagenation(Url, "Index", "Admin")
 
 
+<h3>About Us</h3>
 <table class="table">
     <thead>
         <tr>
             <th>
-               Tittle
+                Tittle
             </th>
             <th>
-               Desc
+                Description
             </th>
             <th>
                 Image
@@ -49,13 +49,15 @@
                             <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5ZM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5h-13Z" />
                         </svg>
                     </a>
-                
+
 
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+
 
 @section addjs{
 
@@ -65,57 +67,57 @@
 
     @*<script>
 
-        function remove(id, name) {
+            function remove(id, name) {
 
-            swal({
-                title: "Eminsiniz?",
-                text: `Testik etdiyiniz teqdirde  '${name}' sistemden  silinecek!`,
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: "btn-danger",
-                buttons: ["No", "Yes"]
-            }).then(
-                function (isConfirm) {
-                    if (isConfirm) {
+                swal({
+                    title: "Eminsiniz?",
+                    text: `Testik etdiyiniz teqdirde  '${name}' sistemden  silinecek!`,
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonClass: "btn-danger",
+                    buttons: ["No", "Yes"]
+                }).then(
+                    function (isConfirm) {
+                        if (isConfirm) {
 
 
-                        $.ajax({
-                            url: '@Url.Action("Delete")',
-                            type: 'POST',
-                            data: { id },
-                            contentType: 'application/x-www-form-urlencoded', // ne tip  gedecek?   2side model binding rolnu oynayir datani back gondermek ucun isdifade edilir  yeni back gonderilmeye xirmet edilir
-                            dataType: 'json',
-                    beforeSend: function () {
-                        console.log("sorgudan evvel")   // loadir acmaq
+                            $.ajax({
+                                url: '@Url.Action("Delete")',
+                                type: 'POST',
+                                data: { id },
+                                contentType: 'application/x-www-form-urlencoded', // ne tip  gedecek?   2side model binding rolnu oynayir datani back gondermek ucun isdifade edilir  yeni back gonderilmeye xirmet edilir
+                                dataType: 'json',
+                        beforeSend: function () {
+                            console.log("sorgudan evvel")   // loadir acmaq
 
-                    },
-                    success: function (response) {   // sorgunun neticesi ugurlu olsa
-                        console.log(response)
+                        },
+                        success: function (response) {   // sorgunun neticesi ugurlu olsa
+                            console.log(response)
 
-                        if (response.error == false) {
+                            if (response.error == false) {
 
-                            toastr.success(response.Message, "Ugurludur");
-                            window.location.reload();
+                                toastr.success(response.Message, "Ugurludur");
+                                window.location.reload();
 
-                        } else {
-                            toastr.error(response.Message, "xeta");
+                            } else {
+                                toastr.error(response.Message, "xeta");
+
+                            }
+                        },
+                                error: function (response) {   // sorgunun neticesi ugursuz olsa
+                                    console.log(response)
+                        },
+
+
+                    }).always(function () {
+                             console.log("sorgudan sonra")  //loadir baglamaq
+
+                    });
 
                         }
-                    },
-                            error: function (response) {   // sorgunun neticesi ugursuz olsa
-                                console.log(response)
-                    },
-
-
-                }).always(function () {
-                         console.log("sorgudan sonra")  //loadir baglamaq
-
-                });
-
-                    }
-                });
-        };
-    </script>*@
+                    });
+            };
+        </script>*@
 }
 
 

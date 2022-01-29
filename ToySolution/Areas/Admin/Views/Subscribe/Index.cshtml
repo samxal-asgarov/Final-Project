@@ -1,0 +1,101 @@
+﻿
+@model IEnumerable<Subscribe>
+
+@{ ViewData["Title"] = "Index"; }
+
+
+
+
+
+
+
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+
+         
+            <div class="col-md-9">
+                <div class="white_box QA_section mb_30">
+
+
+                    <div class="QA_table ">
+                        <!-- table-responsive -->
+                        <table class="table lms_table_active">
+                            <thead>
+                                <tr>
+                                   
+                                    <th scope="col">
+                                        Subscribed accounts
+                                    </th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    
+                    <tr>
+                        
+
+                        <td scope="row">
+                            <label class="primary_checkbox d-flex mr-12 ">
+                               
+                            </label>
+                        </td>
+                        
+                        <td>
+                            <div class="media align-items-center">
+                                <img class="circle-rounded mr-3"
+                                     letters="@item.Email"
+                                     width="30"
+                                     height="30">
+                                <div class="media-body">
+                                    <p>@item.Email</p>
+                                </div>
+                            </div>
+                        </td>
+                      
+                    </tr>
+}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section addcss{
+
+    <style>
+        .white_box {
+            padding: 8px !important;
+            background-color: #FFFFFF;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+        }
+
+        tr.bold > td > p {
+            font-weight: bold !important;
+        }
+
+        tr.bold > td {
+            font-weight: bold !important;
+        }
+    </style>
+}
+
+@section addjs{
+
+    <script src="~/libs/img-letter/Img-letter.js"></script>
+
+
+
+}

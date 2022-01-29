@@ -57,7 +57,7 @@ namespace ToySolution.AppCode.Application.InstagramModule
                 {
                 
                     entity.ImgPath = request.ImgPath;
-                    
+                   
 
 
 

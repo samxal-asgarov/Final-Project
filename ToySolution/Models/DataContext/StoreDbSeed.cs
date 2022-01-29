@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ToySolution.Models.Entities.Membership;
 
 namespace ToySolution.Models.DataContext
 {
@@ -15,12 +16,12 @@ namespace ToySolution.Models.DataContext
         {
             using (var scope = builder.ApplicationServices.CreateScope())
             {
-                var role = new Role
+                var role = new StoreRole
                 {
                     Name = "SuperAdmin"      ///bazada super admin yaratdiq
                 };
                 //RoleManager=Rolu  Idare Edir
-                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<Role>>();
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<StoreRole>>();
 
                 //yoxluyuruq  super admin databazada var yoxsa yox
 
@@ -39,11 +40,11 @@ namespace ToySolution.Models.DataContext
                         goto end;
                     }
                 }
-                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();//role idare etmek ucun rolemanager
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<StoreUser>>();//role idare etmek ucun rolemanager
 
                 string password = "123";
 
-                var user = new User   //user yaratdiq
+                var user = new StoreUser   //user yaratdiq
                 {
                     UserName = "Samxal",
                     Email = "SamxalAs@mail.ru",

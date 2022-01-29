@@ -12,10 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ToySolution.Models.DataContext;
+using ToySolution.Models.Entities.Membership;
 using ToyStoreSolution.Models.DataContext;
 
 namespace ToySolution
@@ -48,12 +46,12 @@ namespace ToySolution
 
             //Mediatr Uchun Yazlib 
             services.AddMediatR(this.GetType().Assembly);
-            services.AddIdentity<User, Role>()
-                 .AddEntityFrameworkStores<StoreDbContext>()
-                 .AddDefaultTokenProviders();
+
+            services.AddIdentity<StoreUser, StoreRole>()
+              .AddEntityFrameworkStores<StoreDbContext>().AddDefaultTokenProviders();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
-
+            
 
 
             services.Configure<IdentityOptions>(cfg =>
@@ -85,8 +83,9 @@ namespace ToySolution
             });
             services.AddAuthentication();
             services.AddAuthorization();
-            services.AddScoped<UserManager<User>>();
-            services.AddScoped<SignInManager<User>>(); //signin menecer inject olunsun
+
+            services.AddScoped<UserManager<StoreUser>>();
+            services.AddScoped<SignInManager<StoreUser>>(); //signin menecer inject olunsun
 
         }
 
@@ -122,6 +121,8 @@ namespace ToySolution
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseStaticFiles();
+
+
 
             app.UseEndpoints(endpoints =>
             {

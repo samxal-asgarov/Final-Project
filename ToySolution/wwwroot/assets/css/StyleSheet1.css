@@ -34,7 +34,8 @@ body {
     }
 
         .logo a h2 {
-            margin-top: 5px;
+            margin-top: 10px;
+            font-size: 25px;
             color: #a5c926;
         }
 
@@ -54,8 +55,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: -30px;
-    margin-top: -11px;
+    margin-left: -50px;
+    margin-top: -9px;
 }
 
     .basket .commerce span {
@@ -167,7 +168,7 @@ body {
     background-position: 50% 94%;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url('/uploads/images/wrapperback.jpg');
+    background-image: url('/uploads/images/wrapperback (1).jpg');
 }
 
     .wrapper .wrap-info {
@@ -591,7 +592,7 @@ body h1 {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-image: url('../../uploads/images/watchstory.jpg')
+    background-image: url('../../uploads/images/indexintro.jpg')
 }
 
 .story {
@@ -1075,11 +1076,11 @@ a svg {
 }
 
 .foot-social ul {
-    margin-top: -29px !important;
+    margin-top: -16px !important;
 }
 
     .foot-social ul #fb svg {
-        margin-top: 35px !important;
+        margin-top: 19px !important;
     }
 
 .foot-social svg {
@@ -1283,7 +1284,7 @@ a svg {
 
 .inforight {
     display: flex;
-    width: 37%;
+    width: 100%;
     height: 34%;
     padding: 60px;
     flex-direction: column;
@@ -1294,13 +1295,15 @@ a svg {
     text-align: center;
     margin-left: 60px;
 }
-
-    .inforight .h4 {
-        font-family: 'Varela Round', sans-serif;
-        font-size: 17px;
-        line-height: 24px;
-        font-weight: 500;
-    }
+.deliveryinfo p{
+    color:black !important;
+}
+.inforight .h4 {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 17px;
+    line-height: 24px;
+    font-weight: 500;
+}
 
     .inforight a {
         height: 40px;
@@ -1314,9 +1317,11 @@ a svg {
         text-align: center;
     }
 
-.deliverylist ul {
-    list-style-type: disc;
-    display: inline-block;
+.deliveryinfo ul {
+    list-style: inside;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
 }
 
 @media screen and (max-width: 376px) {
@@ -1762,15 +1767,16 @@ a svg {
 }
 
 .detailsright {
-    width: 30%;
+    width: 100%;
     height: 239px;
     margin-top: 24px;
     margin-right: 15px;
     margin-left: 60px;
-    padding: 16px 32px;
+    padding: 13px 0px;
     border: 2px solid #e5e5e5;
     border-radius: 16px;
 }
+
 
     .detailsright .clr {
         border: 1px solid #e5e5e5;

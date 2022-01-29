@@ -21,12 +21,15 @@
 <section>
     <div class="delivery">
         <div style="display: flex;  justify-content: flex-start;" class="deliveryinfo">
-            @foreach (var item in Model.Deliveries)
-            {
-                @Html.Raw(item.Head)
-            }
+            <div>
+                @foreach (var item in Model.Deliveries)
+                {
+                    @Html.Raw(item.Head)
+                }
+            </div>
 
-           
+
+
             <div class="inforight">
                 <div class="h4">Can't Find the Answer to Your Question?</div>
                 <a asp-controller="Contact" asp-action="contact">Contact Us</a>
@@ -35,3 +38,59 @@
     </div>
 </section>
 
+
+@section addjs{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script class="removeable">
+
+        function addToCard(id) {
+            let arr = [];
+
+            var storedJson = $.cookie('basket');
+
+            if (storedJson != undefined && typeof storedJson == 'string') {
+                arr = JSON.parse(storedJson)
+                console.log(arr);
+            }
+
+            var found = arr.filter(item => {
+
+                return item.productId == id;       //eger eyni id li product varsa sayi artirsin
+            })[0];
+
+            if (found == undefined) {
+                found = {
+                    productId: id,
+                    count: 1
+
+                };
+                arr.push(found)
+            }
+            else {
+                found.count = found.count + 1;
+            }
+
+
+
+
+
+            var jsonStrinfy = JSON.stringify(arr);
+
+
+
+            $.cookie('basket', jsonStrinfy, { expires: 7, path: '/' }); //cocie yaradrq
+            showBasketCount();
+
+        }
+
+
+
+
+
+
+
+    </script>
+
+
+}

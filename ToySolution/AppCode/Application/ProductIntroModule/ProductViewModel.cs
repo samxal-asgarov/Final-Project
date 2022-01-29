@@ -20,6 +20,9 @@ namespace ToySolution.AppCode.Application.ProductIntroModule
         public string Weight { get; set; }
         public string Length { get; set; }
         public string Body { get; set; }
+        public bool HomePageShow { get; set; }
+       
+        
         public int SortId { get; set; }
         public  Sort Sort { get; set; }
 

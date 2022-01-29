@@ -12,6 +12,7 @@ namespace ToySolution.AppCode.Application.InstagramModule
         [Required]
         public int Id { get; set; }
         public string ImgPath { get; set; }
+        public bool HomePageShow { get; set; }
         public IFormFile file { get; set; }
 
     }

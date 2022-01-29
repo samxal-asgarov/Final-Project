@@ -1,23 +1,13 @@
 ﻿using ASP.NetCV.AppCode.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Text.Json;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using ToySolution.Migrations;
-using ToySolution.Models.Entities;
-using ToySolution.Models.FormModels;
-using ToySolution.Models.ViewModels;
 using ToyStoreSolution.Models.DataContext;
-using ToyStoreSolution.Models.Entities;
 using ToyStoreSolution.Models.ViewModels;
 
 namespace ToyStoreSolution.Controllers
@@ -39,6 +29,20 @@ namespace ToyStoreSolution.Controllers
         {
             IndexViewModels iv = new IndexViewModels();
             iv.InstagramPhotos = db.InstagramPhotos.Where(f => f.DeletedByUserID == null).ToList();
+            iv.Products = db.Products.Where(p => p.DeletedByUserID == null).ToList();
+            iv.AboutUs = db.AboutUs.FirstOrDefault(f => f.DeletedByUserID == null);
+            iv.AboutStories = db.AboutStories.FirstOrDefault(f => f.DeletedByUserID == null);
+
+            Request.Cookies.TryGetValue("basket", out string basketJson1);
+            if (basketJson1?.Length > 0)
+            {
+                string[] arr = basketJson1.Split(',');
+                ViewBag.ms = arr.Length / 2;
+            }
+            else
+            {
+                ViewBag.ms = 0;
+            }
             return View(iv);
         }
 
@@ -47,10 +51,16 @@ namespace ToyStoreSolution.Controllers
 
         public IActionResult Catalog()
         {
+           
+
             IndexViewModels iv = new IndexViewModels();
+            
+            
             iv.Products = db.Products.Where(d => d.DeletedByUserID == null).ToList();
             iv.InstagramPhotos = db.InstagramPhotos.Where(f => f.DeletedByUserID == null).ToList();
             iv.Sort = db.Sort.Where(f => f.DeletedByUserID == null).ToList();
+            
+            
             return View(iv);
         }
    
@@ -80,7 +90,7 @@ namespace ToyStoreSolution.Controllers
         {
             IndexViewModels iv = new IndexViewModels();
             iv.Deliveries = db.Deliveries.Where(d => d.DeletedByUserID == null).ToList();
-            iv.InstagramPhotos = db.InstagramPhotos.Where(f => f.DeletedByUserID == null).ToList();
+
             return View(iv);
         }
         [AllowAnonymous]
@@ -92,7 +102,7 @@ namespace ToyStoreSolution.Controllers
             iv.AboutStories = db.AboutStories.FirstOrDefault(f => f.DeletedByUserID == null);
             iv.AboutIntros = db.AboutIntros.FirstOrDefault(f => f.DeletedByUserID == null);
             iv.AboutOurToys = db.AboutOurToys.FirstOrDefault(f => f.DeletedByUserID == null);
-            iv.InstagramPhotos = db.InstagramPhotos.Where(f => f.DeletedByUserID == null).ToList();
+          
 
             return View(iv);
         }
@@ -123,6 +133,16 @@ namespace ToyStoreSolution.Controllers
                         message = "Emailnize gelen linki tesdiqleyin zehmet olmasa!"
                     });
                 }
+                else if(model.Subscribe.Email==null)
+                {
+                    return Json(new
+                    {
+                        error = true,
+                        message = "E-mail doldurun zehmet olmasa!"
+                    });
+                }
+
+               
                 db.Subscribes.Add(model.Subscribe);
                 db.SaveChanges();
 
@@ -141,7 +161,7 @@ namespace ToyStoreSolution.Controllers
                 MailAddress from = new MailAddress(fromMail, displayName);
 
                 MailAddress to = new MailAddress(model.Subscribe.Email);
-
+              
                 MailMessage message = new MailMessage(from, to);
                 message.Subject = "ToyStore NewsLetter subscribe";
                 message.Body = $"Zehmet olmasa <a href={path}>link</a> vasitesiyle abuneliyinizi tamamlayin";

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using ToySolution.Models.Entities;
+using ToySolution.Models.Entities.Membership;
 using ToySolution.Models.FormModels;
 using ToySolution.Models.ViewModels;
 using ToyStoreSolution.Models.Entities;
@@ -20,8 +18,11 @@ namespace ToyStoreSolution.Models.ViewModels
         public List<InstagramPhoto> InstagramPhotos { get; set; }
         public  ContactPosts ContactPosts { get; set; }
         public Subscribe Subscribe { get; set; }
-        
+
+
         public List<Sort> Sort { get; set; }
+        public List<BasketItem> BasketItems { get; set; }
+        
 
 
 

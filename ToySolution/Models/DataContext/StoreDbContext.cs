@@ -2,11 +2,12 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ToySolution.Models.Entities;
+using ToySolution.Models.Entities.Membership;
 using ToyStoreSolution.Models.Entities;
 
 namespace ToyStoreSolution.Models.DataContext
 {
-    public class StoreDbContext : IdentityDbContext<User, Role, int, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
+    public class StoreDbContext : IdentityDbContext<StoreUser, StoreRole, int, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
     {
         public StoreDbContext(DbContextOptions<StoreDbContext> options)
            : base(options)
@@ -18,15 +19,15 @@ namespace ToyStoreSolution.Models.DataContext
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<User>(e => {
+            builder.Entity<StoreUser>(e => {
                 // adi   //ADI qabagindaki
-                e.ToTable("Users", "Membership");
+                e.ToTable("StoreUser", "Membership");
 
             });
 
-            builder.Entity<Role>(e => {
+            builder.Entity<StoreRole>(e => {
 
-                e.ToTable("Roles", "Membership");
+                e.ToTable("StoreRole", "Membership");
 
             });
 

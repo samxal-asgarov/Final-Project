@@ -102,7 +102,7 @@ namespace ToySolution.Areas.Admin.Controllers
 
 
 
-            var mailSended = configuration.SendEmail(contactPost.Email, "BeluqaTahir", $"Sorguvuza cvb olara  `{model.Answer}` ");
+            var mailSended = configuration.SendEmail(contactPost.Email, "ToyStore", $"Sorgunuza cavab olaraq  `{model.Answer}` ");
 
 
             await db.SaveChangesAsync();

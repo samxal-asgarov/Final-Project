@@ -29,11 +29,7 @@ namespace ToySolution.AppCode.Application.ProductIntroModule
                     .Include(e => e.Sort)
                     .Where(b => b.CreatByUserId == null && b.DeletedByUserID == null).AsQueryable();
                 
-                //int queryCount = await query.CountAsync(cancellationToken); // silinmemislerin sayni takir
-
-                //var pagedData = await query.Skip((model.Pageindex - 1) * model.PageCount) // skip necensi seyfede,
-                //    .Take(model.PageCount) // nece denesini gosdersin.
-                //    .ToListAsync(cancellationToken);
+         
 
 
 

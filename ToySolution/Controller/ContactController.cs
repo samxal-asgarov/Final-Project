@@ -19,9 +19,8 @@ namespace ToyStoreSolution.Controllers
         [HttpGet]
         public IActionResult Contact()
         {
-            IndexViewModels iv = new IndexViewModels();
-            iv.InstagramPhotos = db.InstagramPhotos.Where(f => f.DeletedByUserID == null).ToList();
-            return View(iv);
+            
+            return View();
         }
         [HttpPost]
         //[ValidateAntiForgeryToken]

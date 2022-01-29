@@ -65,6 +65,8 @@ namespace ToySolution.AppCode.Application.ProductIntroModule
                     entity.Width = request.Width;
                     entity.Body = request.Body;
                     entity.Desc = request.Desc;
+                 
+                    entity.HomePageShow = request.HomePageShow;
 
 
 

@@ -5,7 +5,7 @@
 
 @{ ViewData["Title"] = "Details"; }
 
-<h1 style="text-align:center;color:red;">ContactPost</h1>
+
 
 <div class="container">
     <div class="row">
@@ -22,15 +22,10 @@
                 </div>
                 <input type="text" disabled class="form-control" placeholder="@Model.Email" aria-label="Default" aria-describedby="inputGroup-sizing-default">
             </div>
+          
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Subject</span>
-                </div>
-                <input type="text" disabled class="form-control" placeholder="@Model.Answer" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Content</span>
+                    <span class="input-group-text" id="inputGroup-sizing-default">Message</span>
                 </div>
                 <input type="text" disabled class="form-control" placeholder="@Model.Comment" aria-label="Default" aria-describedby="inputGroup-sizing-default">
             </div>
@@ -47,7 +42,7 @@
 </textarea>
 
         <input type="hidden" asp-for="Id" />
-        <button class="btn btn-primary">Cavabla</button>
+        <button class="btn btn-primary">Answer</button>
     </form>
 </dd>
 <div>

@@ -18,6 +18,7 @@ namespace ToySolution.AppCode.Application.InstagramModule
     public class InstagramCreatCommand:IRequest<InstagramPhoto>
     {
         public string ImgPath { get; set; }
+    
         public DateTime DateTime { get; set; }
         public IFormFile file { get; set; }
 

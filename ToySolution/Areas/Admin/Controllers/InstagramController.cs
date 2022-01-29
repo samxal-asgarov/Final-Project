@@ -89,6 +89,7 @@ namespace ToySolution.Areas.Admin.Controllers
 
             vm.Id = respons.Id;
             vm.ImgPath = respons.ImgPath;
+          
 
             return View(vm);
         }

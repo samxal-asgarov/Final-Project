@@ -14,10 +14,10 @@
             <form method="post" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                
-           
-                
-               
+
+
+
+
                 <div class="form-group col-12 ">
                     <label class="control-label">
                         Şəkil
@@ -25,12 +25,12 @@
                     <label style="width:400px" class="image-input"
                            data-imgurl="/uploads/images/@Model.ImgPath"
                            for="file">
-                        <input  type="hidden" name="fileTemp" value="@Model.file">
+                        <input type="hidden" name="fileTemp" value="@Model.file">
                         <span>×</span>
                     </label>
                     <input name="file" id="file" type="file" accept="image/x-png,image/gif,image/jpeg">
                 </div>
-
+               
                 <input type="hidden" asp-for="Id" />
 
 

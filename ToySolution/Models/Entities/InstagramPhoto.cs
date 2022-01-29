@@ -8,5 +8,6 @@ namespace ToyStoreSolution.Models.Entities
     public class InstagramPhoto:BaseEntities
     {
         public string ImgPath { get; set; }
+        public bool HomePageShow { get; set; }
     }
 }

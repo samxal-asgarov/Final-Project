@@ -10,6 +10,8 @@ namespace ToySolution.Models.Entities
     {
         public string Email { get; set; }
         public bool? EmailConfirmed { get; set; }
+ 
+
         public DateTime? ConfirmedDate { get; set; }
     }
 }

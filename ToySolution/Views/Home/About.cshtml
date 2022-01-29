@@ -1,4 +1,4 @@
-﻿@model  IndexViewModels
+﻿@model IndexViewModels
 @{
     ViewData["Title"] = "About";
 }
@@ -54,30 +54,30 @@
     </div>
     <div class="about second">
         <div class="container">
-         
-                <div class="row abt">
-                    <div class="str">
-                        <div class="col-6 info">
-                            <h2>@Model.AboutUs.Tittle</h2>
-                            <div class="aboutcolor"></div>
-                            <p>
-                                @Model.AboutUs.Desc
-                            </p>
 
-                            <a asp-controller="home" asp-action="index">Get It for Free!</a>
+            <div class="row abt">
+                <div class="str">
+                    <div class="col-6 info">
+                        <h2>@Model.AboutUs.Tittle</h2>
+                        <div class="aboutcolor"></div>
+                        <p>
+                            @Model.AboutUs.Desc
+                        </p>
+
+                        <a asp-controller="home" asp-action="index">Get It for Free!</a>
 
 
-                        </div>
-                        <div class="col-6 about-img">
-                            <img data-aos="zoom-in" class="  im1" style=" width: 100%;
+                    </div>
+                    <div class="col-6 about-img">
+                        <img data-aos="zoom-in" class="  im1" style=" width: 100%;
 
                    height: 423px;" src="~/uploads/images/@Model.AboutUs.ImgPath" alt="">
-                        </div>
                     </div>
-
-
                 </div>
-       
+
+
+            </div>
+
 
         </div>
 
@@ -88,28 +88,28 @@
 
     <div class="about">
         <div class="container">
-          
-                <div class="row abt aboutpart2">
-                    <div class="str">
-                        <div class="col-6 info">
-                            <h2>@Model.AboutOurToys.Tittle</h2>
-                            <div class="aboutcolor"></div>
-                            <p>
-                                @Model.AboutOurToys.Desc
-                            </p>
-                            <a asp-controller="home" asp-action="catalog">Explore Our Toys!</a>
-                        </div>
-                        <div class="col-6 about-img">
-                            <img data-aos="zoom-in" class="  im1" style=" width: 100%;
+
+            <div class="row abt aboutpart2">
+                <div class="str">
+                    <div class="col-6 info">
+                        <h2>@Model.AboutOurToys.Tittle</h2>
+                        <div class="aboutcolor"></div>
+                        <p>
+                            @Model.AboutOurToys.Desc
+                        </p>
+                        <a asp-controller="home" asp-action="catalog">Explore Our Toys!</a>
+                    </div>
+                    <div class="col-6 about-img">
+                        <img data-aos="zoom-in" class="  im1" style=" width: 100%;
 
                    height: 423px;" src="~/uploads/images/@Model.AboutOurToys.ImgPath" alt="">
-                        </div>
-
-
                     </div>
 
 
                 </div>
+
+
+            </div>
 
 
         </div>
@@ -172,3 +172,60 @@
 
     </div>
 </section>
+
+
+@section addjs{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script class="removeable">
+
+        function addToCard(id) {
+            let arr = [];
+
+            var storedJson = $.cookie('basket');
+
+            if (storedJson != undefined && typeof storedJson == 'string') {
+                arr = JSON.parse(storedJson)
+                console.log(arr);
+            }
+
+            var found = arr.filter(item => {
+
+                return item.productId == id;       //eger eyni id li product varsa sayi artirsin
+            })[0];
+
+            if (found == undefined) {
+                found = {
+                    productId: id,
+                    count: 1
+
+                };
+                arr.push(found)
+            }
+            else {
+                found.count = found.count + 1;
+            }
+
+
+
+
+
+            var jsonStrinfy = JSON.stringify(arr);
+
+
+
+            $.cookie('basket', jsonStrinfy, { expires: 7, path: '/' }); //cocie yaradrq
+            showBasketCount();
+
+        }
+
+
+
+
+
+
+
+    </script>
+
+
+}
